@@ -21,16 +21,18 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" => "home"
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
-        "title" => "About",
-        "name" => "Alif Luqman",
-        "email" => "alifluqman994@gmail.com",
-        "image" => "alifl.jpg"
+        'title' => "About",
+        "active" => "about",
+        'name' => "AlifLuqmanHakim",
+        'email' => "alifluqman994@gmail.com",
+        'image' => "alifl.jpg"
     ]);
 });
 
