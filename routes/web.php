@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -80,3 +81,8 @@ Route::get('/authors/{author:username}', function (User $author) {
         'posts' => $author->posts->load('category', 'author'),
     ]);
 });
+
+Route::get('/dashboard/category/checkSlug', [DashboardCategoryController::class, 'checkSlug'])
+    ->middleware('auth');
+Route::resource('/dashboard/category', DashboardCategoryController::class)->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
